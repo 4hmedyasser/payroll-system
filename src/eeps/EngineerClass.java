@@ -3,7 +3,7 @@ package eeps;
 import java.io.*;
 import java.util.Scanner;
 import java.io.BufferedReader;
-import java.util.Vector;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -170,9 +170,9 @@ public class EngineerClass extends EmployeeClass{
         }
     }
     
-    public Vector<Vector<String>> viewEngineers(){
+    public ArrayList<ArrayList<String>> viewEngineers(){
         String filepath="Engineers.txt";
-        Vector<Vector<String>> EngList = null;
+        ArrayList<ArrayList<String>> EngList = new ArrayList<ArrayList<String>>();
         try {
             String id =" ";
             String name=" ";
@@ -190,7 +190,7 @@ public class EngineerClass extends EmployeeClass{
             int i = 0;
             while(w.hasNext())
             {
-                Vector<String> tempEngList = null;
+                ArrayList<String> tempEngList = new ArrayList<String>();
                 
                 id=w.next();
                 name=w.next();
@@ -223,11 +223,11 @@ public class EngineerClass extends EmployeeClass{
     }
     
     
-    public Vector<Vector<String>> searchEngineer(String forSearch)
+    public ArrayList<ArrayList<String>> searchEngineer(String forSearch)
     {
     String filepath="Engineers.txt";
 
-    Vector<Vector<String>> searchResults = null;
+    ArrayList<ArrayList<String>> searchResults = null;
     
         try {
             String id =" ";
@@ -246,7 +246,7 @@ public class EngineerClass extends EmployeeClass{
             w.useDelimiter("[@\n]");
             while(w.hasNext())
             {
-                Vector<String> results = null;
+                ArrayList<String> results = null;
                 
                 id=w.next();
                 name=w.next();

@@ -2,11 +2,11 @@ package eeps;
     
 import java.util.List;
 import java.awt.*;
-import java.util.Vector;
 import javax.swing.*;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+
 
 public class viewEngineer extends javax.swing.JFrame {
     private int framePositionX, framePositionY, mousePositionX, mousePositionY, newMousePositionX, newMousePositionY;
@@ -210,11 +210,21 @@ public class viewEngineer extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         
         EngineerClass tempEng = new EngineerClass();
-        Vector<Vector<String>> tempList = tempEng.viewEngineers();
         
-        for(int i = 0 ; i < tempList.get(0).size() ; i++){
-            model.addRow(tempList.get(i));
+        ArrayList<ArrayList<String>> tempList = tempEng.viewEngineers();
+        for(int i = 0 ; i < tempList.size() ; i++){
+            model.addRow(new Object[]{
+                tempList.get(i).get(0),
+                tempList.get(i).get(1),
+                tempList.get(i).get(2),
+                tempList.get(i).get(3),
+                tempList.get(i).get(4),
+                tempList.get(i).get(5),
+                tempList.get(i).get(6),
+                tempList.get(i).get(7),
+            });
         }
+        
         
         
         

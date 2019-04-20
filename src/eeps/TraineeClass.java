@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TraineeClass extends EmployeeClass{
@@ -175,10 +175,10 @@ public class TraineeClass extends EmployeeClass{
 
         }
     }
-    public String[][] viewTrainees()
+    public ArrayList<ArrayList<String>> viewTrainees()
     {
     String filepath="Trainees.txt";
-    String[][] tempViewTrain = null;
+    ArrayList<ArrayList<String>> tempViewTrain = new ArrayList<ArrayList<String>>();
         try {
             String id =" ";
             String name=" ";
@@ -192,11 +192,10 @@ public class TraineeClass extends EmployeeClass{
             BufferedReader brr= new BufferedReader(fr);
             Scanner w = new Scanner(new File(filepath));
             w.useDelimiter("[@\n]");
-            int i = 0;
             while(w.hasNext())
             {
                 
-                String[] tempViewList = null;
+                ArrayList<String> tempViewList = new ArrayList<String>();
                 
                 id=w.next();
                 name=w.next();
@@ -206,17 +205,15 @@ public class TraineeClass extends EmployeeClass{
                 GPA= w.next();
                 academicYear=w.next();
                 
-                tempViewList[0] = id;
-                tempViewList[1] = name;
-                tempViewList[2] = age;
-                tempViewList[3] = universityName;
-                tempViewList[4] = academicYear;
-                tempViewList[5] = GPA;
-                tempViewList[6] = salary;
+                tempViewList.add(id);
+                tempViewList.add(name);
+                tempViewList.add(age);
+                tempViewList.add(universityName);
+                tempViewList.add(academicYear);
+                tempViewList.add(GPA);
+                tempViewList.add(salary);
                 
-                tempViewTrain[i] = tempViewList;
-                i++;
-                
+                tempViewTrain.add(tempViewList);
             }
             fr.close();
         } catch (Exception e) {
@@ -227,11 +224,11 @@ public class TraineeClass extends EmployeeClass{
         
     }
     
-    public List<List<String>> searchTrainees(String forSearch)
+    public ArrayList<ArrayList<String>> searchTrainees(String forSearch)
     {
     String filepath="Trainees.txt";
 
-    List<List<String>> searchResults = null;
+    ArrayList<ArrayList<String>> searchResults = null;
     
         try {
             String id =" ";
@@ -249,7 +246,7 @@ public class TraineeClass extends EmployeeClass{
             w.useDelimiter("[@\n]");
             while(w.hasNext())
             {
-                List<String> results = null;
+                ArrayList<String> results = null;
                 
                 id=w.next();
                 name=w.next();
@@ -278,7 +275,7 @@ public class TraineeClass extends EmployeeClass{
     
     public void upgradeTrainee(String upgradeID, String tmpPosition, double workhours){
         
-        List<List<String>> tempList = searchTrainees(upgradeID);
+        ArrayList<ArrayList<String>> tempList = searchTrainees(upgradeID);
         deleteTrainee(upgradeID);
         GradeClass tmpGrade = new GradeClass();
         tmpGrade.setPosition(tmpPosition);

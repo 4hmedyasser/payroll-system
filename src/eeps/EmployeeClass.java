@@ -30,7 +30,7 @@ abstract class EmployeeClass {
             fr.close();
             
         } catch (Exception e) {
-            System.out.println("There is an Exception here whyy READ !");
+            System.out.println("File does not exist but do not worry!");
         }
         
             

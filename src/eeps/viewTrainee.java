@@ -2,8 +2,9 @@ package eeps;
     
 import java.awt.*;
 import javax.swing.*;
-
 import javax.swing.*;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class viewTrainee extends javax.swing.JFrame {
     private int framePositionX, framePositionY, mousePositionX, mousePositionY, newMousePositionX, newMousePositionY;
@@ -36,6 +37,11 @@ public class viewTrainee extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(95, 158, 160));
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -195,6 +201,28 @@ public class viewTrainee extends javax.swing.JFrame {
         this.hide();
     }//GEN-LAST:event_jLabel5MouseClicked
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        
+        TraineeClass tempTrain = new TraineeClass();
+        
+        ArrayList<ArrayList<String>> tempList = tempTrain.viewTrainees();
+        
+        for(int i = 0 ; i < tempList.size() ; i++){
+            model.addRow(new Object[]{
+                tempList.get(i).get(0),
+                tempList.get(i).get(1),
+                tempList.get(i).get(2),
+                tempList.get(i).get(3),
+                tempList.get(i).get(4),
+                tempList.get(i).get(5),
+                tempList.get(i).get(6),
+            });
+        }
+    }//GEN-LAST:event_formWindowActivated
+
+    
     public static void main(String args[]) {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
