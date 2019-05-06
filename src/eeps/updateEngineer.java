@@ -29,9 +29,9 @@ public class updateEngineer extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        positionBox = new javax.swing.JComboBox();
         name = new javax.swing.JTextField();
         workingHours = new javax.swing.JTextField();
-        position = new javax.swing.JTextField();
         age = new javax.swing.JTextField();
         id = new javax.swing.JTextField();
         Update = new javax.swing.JLabel();
@@ -126,6 +126,9 @@ public class updateEngineer extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 840, 40));
 
+        positionBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Team Member", "Team Leader", "Manager" }));
+        getContentPane().add(positionBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 140, 20));
+
         name.setBackground(new java.awt.Color(250, 243, 243));
         name.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 12)); // NOI18N
         name.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -135,11 +138,6 @@ public class updateEngineer extends javax.swing.JFrame {
         workingHours.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 12)); // NOI18N
         workingHours.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         getContentPane().add(workingHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 130, 20));
-
-        position.setBackground(new java.awt.Color(250, 243, 243));
-        position.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 12)); // NOI18N
-        position.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        getContentPane().add(position, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, 130, 20));
 
         age.setBackground(new java.awt.Color(250, 243, 243));
         age.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 12)); // NOI18N
@@ -232,17 +230,23 @@ public class updateEngineer extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             EngineerClass tempEng = new EngineerClass();
-            tempEng.editEngineer(id.getText() , name.getText() , age.getText() , workingHours.getText() , position.getText());
-
-            new updatedSuccessfully().setVisible(true);
-            adminForm af = new adminForm();
-            af.setVisible(true);
-            this.hide();
+            boolean checked = tempEng.editEngineer(id.getText() , name.getText() , age.getText() , workingHours.getText() , String.valueOf(positionBox.getSelectedItem()) );
+            if (checked != true) {
+                throw new InvalidIDException(1);
+            }
+            else{
+                new updatedSuccessfully().setVisible(true);
+                adminForm af = new adminForm();
+                af.setVisible(true);
+                this.hide();
+            }
+            
         } catch (NumberFormatException e) {
             new emptyField().setVisible(true);
-        } catch (Exception ex) {
-            new noEngineerID().setVisible(true);
+        } catch (InvalidIDException ex) {
+            ex.showMessage();
         }
+        
     }//GEN-LAST:event_UpdateMouseClicked
 
     public static void main(String args[]) {
@@ -274,7 +278,7 @@ public class updateEngineer extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField name;
-    private javax.swing.JTextField position;
+    private javax.swing.JComboBox positionBox;
     private javax.swing.JTextField workingHours;
     // End of variables declaration//GEN-END:variables
 }

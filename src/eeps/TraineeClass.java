@@ -59,7 +59,7 @@ public class TraineeClass extends EmployeeClass{
         pw.close();
     }
     
-    public void editTrainee(String removeID , String edname , String edage , String eduniversityName, String edGPA, String edacademicYear){
+    public boolean editTrainee(String removeID , String edname , String edage , String eduniversityName, String edGPA, String edacademicYear){
         
         String temp = "temp.txt";
         String filepath = "Trainees.txt";
@@ -73,7 +73,9 @@ public class TraineeClass extends EmployeeClass{
         String tempUniversityName=" ";
         String tempGPA = " ";
         String tempAcademicYear=" " ;
-
+        
+        boolean found = false;
+        
         try {
 
             FileWriter fw = new FileWriter(temp,true);
@@ -99,6 +101,7 @@ public class TraineeClass extends EmployeeClass{
                 else
                 {
                     pw.println(tempId+"@"+edname+"@"+edage+"@"+tempSalary+"@"+eduniversityName+"@"+edGPA+"@"+edacademicYear);
+                    found = true;
                 }
             }
 
@@ -108,17 +111,21 @@ public class TraineeClass extends EmployeeClass{
             oldFile.delete();
             File free = new File (filepath);
             newFile.renameTo(free);
-
+            
         }
         catch (Exception e)
         {
 
-            new noTraineeWithId().setVisible(true);
+            System.out.println("Trainees.txt doesn't exist.\n\t@ editTrainee");
 
         }
+        if (found == true) {
+            return true;
+        }
+        return false;
     }
     
-    public void deleteTrainee(String removeID){
+    public boolean deleteTrainee(String removeID){
         String temp = "temp.txt";
         String filepath = "Trainees.txt";
         
@@ -133,6 +140,8 @@ public class TraineeClass extends EmployeeClass{
         File oldFile = new File (filepath);
         File newFile = new File (temp);
 
+        boolean found = false;
+        
         try {
 
             FileWriter fw = new FileWriter(temp,true);
@@ -155,6 +164,9 @@ public class TraineeClass extends EmployeeClass{
                 if (!removeID.equals(tempId)){
                     pw.println(tempId+"@"+tempName+"@"+tempAge+"@"+tempSalary+"@"+tempUniversityName+"@"+tempGPA+"@"+tempAcademicYear);
                 }
+                else {
+                    found = true;
+                }
             }
 
             x.close();
@@ -167,10 +179,17 @@ public class TraineeClass extends EmployeeClass{
         }
         catch (Exception e)
         {
-            new noTraineeWithId().setVisible(true);
-
+            System.out.println("Trainees.txt doesn't exist.\n\t@ deleteTrainee");
         }
+        
+        if (found == true){
+            return true;
+        }
+        return false;
     }
+    
+    
+    
     public ArrayList<ArrayList<String>> viewTrainees()
     {
     String filepath="Trainees.txt";

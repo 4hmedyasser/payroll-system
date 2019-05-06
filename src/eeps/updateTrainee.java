@@ -238,16 +238,21 @@ public class updateTrainee extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             TraineeClass tempTrain = new TraineeClass();
-            tempTrain.editTrainee(id.getText(), name.getText(), age.getText(), workingHours.getText(), position.getText(), payRate.getText());
-
-            new updatedSuccessfully().setVisible(true);
-            adminForm af = new adminForm();
-            af.setVisible(true);
-            this.hide();
-        } catch (NumberFormatException e) {
-            new emptyField().setVisible(true);
-        } catch (Exception ex) {
-            new noTraineeWithId().setVisible(true);
+            boolean checked = tempTrain.editTrainee(id.getText(), name.getText(), age.getText(), workingHours.getText(), position.getText(), payRate.getText());
+            if (checked != true){
+                throw new InvalidIDException(2);
+            }
+            else{
+                new updatedSuccessfully().setVisible(true);
+                adminForm af = new adminForm();
+                af.setVisible(true);
+                this.hide();
+            }
+            
+        }   catch (NumberFormatException e) {
+                new emptyField().setVisible(true);
+        }   catch (InvalidIDException ex) {
+                ex.showMessage();
         }
         
     }//GEN-LAST:event_UpdateMouseClicked

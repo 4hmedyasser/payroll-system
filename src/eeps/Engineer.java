@@ -137,11 +137,6 @@ public class Engineer extends javax.swing.JFrame {
         getContentPane().add(view, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 160, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eeps/Images/EngineerPanel.png"))); // NOI18N
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
-            }
-        });
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 830, 460));
 
         pack();
@@ -151,15 +146,6 @@ public class Engineer extends javax.swing.JFrame {
            System.exit(0);
            
     }//GEN-LAST:event_jLabel6MouseClicked
-
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
-        // TODO add your handling code here:
-        
-        AddEngineer ae = new AddEngineer();
-        ae.setVisible(true);
-        this.hide();
-        
-    }//GEN-LAST:event_jLabel1MouseClicked
 
     private void EditMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EditMouseClicked
         // TODO add your handling code here:

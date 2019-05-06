@@ -211,16 +211,20 @@ public class removeEngineer extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             EngineerClass enf = new EngineerClass();
-            enf.deleteEngineer(id.getText());
-
-            new RemovedSuccessfully().setVisible(true);
-            adminForm af = new adminForm();
-            af.setVisible(true);
-            this.hide();
+            boolean checked = enf.deleteEngineer(id.getText());
+            if(checked != true){
+                throw new InvalidIDException(1);
+            }
+            else{
+                new RemovedSuccessfully().setVisible(true);
+                adminForm af = new adminForm();
+                af.setVisible(true);
+                this.hide();
+            }
         } catch (NumberFormatException e) {
             new emptyField().setVisible(true);
-        } catch (Exception ex) {
-            new noEngineerID().setVisible(true);
+        } catch (InvalidIDException ex) {
+            ex.showMessage();
         }
         
     }//GEN-LAST:event_EngineerMouseClicked

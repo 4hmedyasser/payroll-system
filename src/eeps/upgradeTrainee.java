@@ -218,7 +218,7 @@ public class upgradeTrainee extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             new emptyField().setVisible(true);
         } catch (Exception ex) {
-            new noTraineeWithId().setVisible(true);
+            new InvalidTraineeID().setVisible(true);
         }
         
     }//GEN-LAST:event_upgradeMouseClicked

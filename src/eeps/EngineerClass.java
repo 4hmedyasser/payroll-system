@@ -46,7 +46,7 @@ public class EngineerClass extends EmployeeClass{
         pw.close();
     }
 
-    public void deleteEngineer(String removeID) {
+    public boolean deleteEngineer(String removeID) {
 
         String temp = "temp.txt";
         String filepath = "Engineers.txt";
@@ -62,6 +62,8 @@ public class EngineerClass extends EmployeeClass{
         File oldFile = new File (filepath);
         File newFile = new File (temp);
 
+        boolean found = false;
+        
         try {
 
             FileWriter fw = new FileWriter(temp,true);
@@ -85,6 +87,9 @@ public class EngineerClass extends EmployeeClass{
                 if (!removeID.equals(tempId)){
                     pw.println(tempId+"@"+tempName+"@"+tempAge+"@"+tempSalary+"@"+tempWorkingHours+"@"+tempPayRate+"@"+tempTax+"@"+tempPosition);
                 }
+                else{
+                    found = true;
+                }
             }
 
             x.close();
@@ -97,14 +102,17 @@ public class EngineerClass extends EmployeeClass{
         }
         catch (Exception e)
         {
-            new noEngineerID().setVisible(true);
-
+            System.out.println("Engineers.txt doesn't exist.\n\t@ deleteEngineer");
         }
+        if (found == true) {
+            return true;
+        }
+        return false;
     }
 
 
 
-    public void editEngineer(String removeID , String edName , String edAge , String edworkingHours , String edposition ){
+    public boolean editEngineer(String removeID , String edName , String edAge , String edworkingHours , String edposition ){
 
         String temp = "temp.txt";
         String filepath = "Engineers.txt";
@@ -120,6 +128,8 @@ public class EngineerClass extends EmployeeClass{
         String tempTax=" " ;
         String tempPosition =" " ;
 
+        boolean found = false;
+        
         try {
 
             FileWriter fw = new FileWriter(temp,true);
@@ -146,6 +156,7 @@ public class EngineerClass extends EmployeeClass{
                 else
                 {
                     pw.println(tempId+"@"+edName+"@"+edAge+"@"+tempSalary+"@"+edworkingHours+"@"+tempPayRate+"@"+tempTax+"@"+edposition);
+                    found = true;
                 }
             }
 
@@ -159,10 +170,14 @@ public class EngineerClass extends EmployeeClass{
         }
         catch (Exception e)
         {
-
-            new noEngineerID().setVisible(true);
+            
+            System.out.println("Engineers.txt doesn't exist.\n\t@ editEngineer");
 
         }
+        if (found == true) {
+            return true;
+        }
+        return false;
     }
     
     public ArrayList<ArrayList<String>> viewEngineers(){

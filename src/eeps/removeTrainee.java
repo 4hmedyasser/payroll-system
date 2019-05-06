@@ -208,16 +208,20 @@ public class removeTrainee extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             TraineeClass tempTrain = new TraineeClass();
-            tempTrain.deleteTrainee(id.getText());
-
-            new RemovedSuccessfully().setVisible(true);
-            adminForm af = new adminForm();
-            af.setVisible(true);
-            this.hide();
+            boolean checked = tempTrain.deleteTrainee(id.getText());
+            if(checked != true){
+                throw new InvalidIDException(2);
+            }
+            else{
+                new RemovedSuccessfully().setVisible(true);
+                adminForm af = new adminForm();
+                af.setVisible(true);
+                this.hide();
+            }
         } catch (NumberFormatException e) {
             new emptyField().setVisible(true);
-        } catch (Exception ex) {
-            new noTraineeWithId().setVisible(true);
+        } catch (InvalidIDException ex) {
+            ex.showMessage();
         }
         
     }//GEN-LAST:event_EngineerMouseClicked
