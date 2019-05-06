@@ -230,14 +230,19 @@ public class updateEngineer extends javax.swing.JFrame {
 
     private void UpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseClicked
         // TODO add your handling code here:
-        EngineerClass tempEng = new EngineerClass();
-        tempEng.editEngineer(id.getText() , name.getText() , age.getText() , workingHours.getText() , position.getText());
-        
-        new updatedSuccessfully().setVisible(true);
-        adminForm af = new adminForm();
-        af.setVisible(true);
-        this.hide();
-        
+        try {
+            EngineerClass tempEng = new EngineerClass();
+            tempEng.editEngineer(id.getText() , name.getText() , age.getText() , workingHours.getText() , position.getText());
+
+            new updatedSuccessfully().setVisible(true);
+            adminForm af = new adminForm();
+            af.setVisible(true);
+            this.hide();
+        } catch (NumberFormatException e) {
+            new emptyField().setVisible(true);
+        } catch (Exception ex) {
+            new noEngineerID().setVisible(true);
+        }
     }//GEN-LAST:event_UpdateMouseClicked
 
     public static void main(String args[]) {

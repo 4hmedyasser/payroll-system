@@ -236,13 +236,19 @@ public class updateTrainee extends javax.swing.JFrame {
 
     private void UpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UpdateMouseClicked
         // TODO add your handling code here:
-        TraineeClass tempTrain = new TraineeClass();
-        tempTrain.editTrainee(id.getText(), name.getText(), age.getText(), workingHours.getText(), position.getText(), payRate.getText());
-        
-        new updatedSuccessfully().setVisible(true);
-        adminForm af = new adminForm();
-        af.setVisible(true);
-        this.hide();
+        try {
+            TraineeClass tempTrain = new TraineeClass();
+            tempTrain.editTrainee(id.getText(), name.getText(), age.getText(), workingHours.getText(), position.getText(), payRate.getText());
+
+            new updatedSuccessfully().setVisible(true);
+            adminForm af = new adminForm();
+            af.setVisible(true);
+            this.hide();
+        } catch (NumberFormatException e) {
+            new emptyField().setVisible(true);
+        } catch (Exception ex) {
+            new noTraineeWithId().setVisible(true);
+        }
         
     }//GEN-LAST:event_UpdateMouseClicked
 

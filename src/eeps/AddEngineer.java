@@ -235,16 +235,19 @@ public class AddEngineer extends javax.swing.JFrame {
 
     private void AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseClicked
         // TODO add your handling code here:
-        
-        Grade tempGrade =  new Grade();
-        tempGrade.setPosition(String.valueOf(positionBox.getSelectedItem()));
-        tempGrade.calculateSalary(Double.parseDouble(workingHours.getText()));
-        tempEng.addEngineer(name.getText(), Integer.parseInt(age.getText()), Double.parseDouble(workingHours.getText()), tempGrade);
-        
-        new addedSuccessfully().setVisible(true);
-        adminForm af = new adminForm();
-        af.setVisible(true);
-        this.hide();
+        try {
+            Grade tempGrade =  new Grade();
+            tempGrade.setPosition(String.valueOf(positionBox.getSelectedItem()));
+            tempGrade.calculateSalary(Double.parseDouble(workingHours.getText()));
+            tempEng.addEngineer(name.getText(), Integer.parseInt(age.getText()), Double.parseDouble(workingHours.getText()), tempGrade);
+
+            new addedSuccessfully().setVisible(true);
+            adminForm af = new adminForm();
+            af.setVisible(true);
+            this.hide();
+        } catch (NumberFormatException e) {
+            new emptyField().setVisible(true);
+        }
     }//GEN-LAST:event_AddMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated

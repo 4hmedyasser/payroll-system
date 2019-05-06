@@ -248,13 +248,16 @@ public class AddTrainee extends javax.swing.JFrame {
 
     private void AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseClicked
         // TODO add your handling code here:
-        
-        tempTrainee.AddTrainee(name.getText(), Integer.parseInt(age.getText()), workingHours.getText() , Double.parseDouble(position.getText()) , Integer.parseInt(payRate.getText()));
-        
-        new addedSuccessfully().setVisible(true);
-        adminForm af = new adminForm();
-        af.setVisible(true);
-        this.hide();
+        try {
+            tempTrainee.AddTrainee(name.getText(), Integer.parseInt(age.getText()), workingHours.getText() , Double.parseDouble(position.getText()) , Integer.parseInt(payRate.getText()));
+
+            new addedSuccessfully().setVisible(true);
+            adminForm af = new adminForm();
+            af.setVisible(true);
+            this.hide();
+        } catch (NumberFormatException e) {
+            new emptyField().setVisible(true);
+        }
     }//GEN-LAST:event_AddMouseClicked
 
     public static void main(String args[]) {

@@ -29,8 +29,8 @@ public class upgradeTrainee extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        positionBox = new javax.swing.JComboBox();
         jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         upgrade = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -124,15 +124,13 @@ public class upgradeTrainee extends javax.swing.JFrame {
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 840, 40));
 
+        positionBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Team Member", "Team Leader", "Manager" }));
+        getContentPane().add(positionBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 140, 20));
+
         jTextField2.setBackground(new java.awt.Color(250, 243, 243));
         jTextField2.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 12)); // NOI18N
         jTextField2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 150, 20));
-
-        jTextField3.setBackground(new java.awt.Color(250, 243, 243));
-        jTextField3.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 12)); // NOI18N
-        jTextField3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, 150, 20));
 
         jTextField4.setBackground(new java.awt.Color(250, 243, 243));
         jTextField4.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 12)); // NOI18N
@@ -209,13 +207,19 @@ public class upgradeTrainee extends javax.swing.JFrame {
 
     private void upgradeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_upgradeMouseClicked
         // TODO add your handling code here:
-        TraineeClass tempTrain = new TraineeClass();
-        tempTrain.upgradeTrainee(jTextField2.getText(), jTextField3.getText(), Double.parseDouble(jTextField4.getText()));
-        
-        new updatedSuccessfully().setVisible(true);
-        adminForm af = new adminForm();
-        af.setVisible(true);
-        this.hide();
+        try {
+            TraineeClass tempTrain = new TraineeClass();
+            tempTrain.upgradeTrainee(jTextField2.getText(), String.valueOf(positionBox.getSelectedItem()), Double.parseDouble(jTextField4.getText()));
+
+            new updatedSuccessfully().setVisible(true);
+            adminForm af = new adminForm();
+            af.setVisible(true);
+            this.hide();
+        } catch (NumberFormatException e) {
+            new emptyField().setVisible(true);
+        } catch (Exception ex) {
+            new noTraineeWithId().setVisible(true);
+        }
         
     }//GEN-LAST:event_upgradeMouseClicked
 
@@ -245,8 +249,8 @@ public class upgradeTrainee extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JComboBox positionBox;
     private javax.swing.JLabel upgrade;
     // End of variables declaration//GEN-END:variables
 }

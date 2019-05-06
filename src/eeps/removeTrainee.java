@@ -206,13 +206,19 @@ public class removeTrainee extends javax.swing.JFrame {
 
     private void EngineerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EngineerMouseClicked
         // TODO add your handling code here:
-        TraineeClass tempTrain = new TraineeClass();
-        tempTrain.deleteTrainee(id.getText());
-        
-        new RemovedSuccessfully().setVisible(true);
-        adminForm af = new adminForm();
-        af.setVisible(true);
-        this.hide();
+        try {
+            TraineeClass tempTrain = new TraineeClass();
+            tempTrain.deleteTrainee(id.getText());
+
+            new RemovedSuccessfully().setVisible(true);
+            adminForm af = new adminForm();
+            af.setVisible(true);
+            this.hide();
+        } catch (NumberFormatException e) {
+            new emptyField().setVisible(true);
+        } catch (Exception ex) {
+            new noTraineeWithId().setVisible(true);
+        }
         
     }//GEN-LAST:event_EngineerMouseClicked
 
