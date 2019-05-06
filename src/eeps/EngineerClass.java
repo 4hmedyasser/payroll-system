@@ -97,7 +97,7 @@ public class EngineerClass extends EmployeeClass{
         }
         catch (Exception e)
         {
-            System.out.println("There is an Exception here !");
+            new noEngineerID().setVisible(true);
 
         }
     }
@@ -160,7 +160,7 @@ public class EngineerClass extends EmployeeClass{
         catch (Exception e)
         {
 
-            System.out.println("There is an Exception here !");
+            new noEngineerID().setVisible(true);
 
         }
     }

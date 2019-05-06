@@ -113,7 +113,7 @@ public class TraineeClass extends EmployeeClass{
         catch (Exception e)
         {
 
-            System.out.println("There is an Exception here !");
+            new noTraineeWithId().setVisible(true);
 
         }
     }
@@ -167,7 +167,7 @@ public class TraineeClass extends EmployeeClass{
         }
         catch (Exception e)
         {
-            System.out.println("There is an Exception here !");
+            new noTraineeWithId().setVisible(true);
 
         }
     }
