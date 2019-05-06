@@ -1,8 +1,6 @@
 package eeps;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Scanner;
@@ -81,10 +79,5 @@ abstract class EmployeeClass {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-
-    
-
-    // Add here any methods for the Employee ...
-
 
 }

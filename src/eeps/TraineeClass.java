@@ -1,10 +1,7 @@
 package eeps;
 
-
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,7 +10,6 @@ import java.util.Scanner;
 
 public class TraineeClass extends EmployeeClass{
 
-    static int numberOfTrainees;
     private String universityName ;
     private double GPA ;
     private int academicYear ;
@@ -35,7 +31,6 @@ public class TraineeClass extends EmployeeClass{
         try {
 
             addTotext (name,id,age,universityName,GPA,academicYear);
-            numberOfTrainees++ ;
 
         }
 
@@ -65,6 +60,7 @@ public class TraineeClass extends EmployeeClass{
     }
     
     public void editTrainee(String removeID , String edname , String edage , String eduniversityName, String edGPA, String edacademicYear){
+        
         String temp = "temp.txt";
         String filepath = "Trainees.txt";
 
@@ -102,7 +98,7 @@ public class TraineeClass extends EmployeeClass{
                 }
                 else
                 {
-                    pw.println(tempId+"@"+tempName+"@"+tempAge+"@"+tempSalary+"@"+eduniversityName+"@"+edGPA+"@"+edacademicYear);
+                    pw.println(tempId+"@"+edname+"@"+edage+"@"+tempSalary+"@"+eduniversityName+"@"+edGPA+"@"+edacademicYear);
                 }
             }
 
@@ -188,12 +184,9 @@ public class TraineeClass extends EmployeeClass{
             String GPA =" ";
             String academicYear=" ";
             
-            FileReader fr = new FileReader(filepath);
-            BufferedReader brr= new BufferedReader(fr);
             Scanner w = new Scanner(new File(filepath));
             w.useDelimiter("[@\n]");
-            while(w.hasNext())
-            {
+            while(w.hasNext()) {
                 
                 ArrayList<String> tempViewList = new ArrayList<String>();
                 
@@ -214,8 +207,9 @@ public class TraineeClass extends EmployeeClass{
                 tempViewList.add(salary);
                 
                 tempViewTrain.add(tempViewList);
+                
             }
-            fr.close();
+            
         } catch (Exception e) {
             System.out.println("There is an Exception here !");
         }
@@ -284,7 +278,7 @@ public class TraineeClass extends EmployeeClass{
         
         ArrayList<ArrayList<String>> tempList = searchTrainees(upgradeID);
         
-        GradeClass tmpGrade = new GradeClass();
+        Grade tmpGrade = new Grade();
         tmpGrade.setPosition(tmpPosition);
         
         EngineerClass tempEmp = new EngineerClass();
@@ -321,9 +315,5 @@ public class TraineeClass extends EmployeeClass{
     public String getuniversityName() {
         return universityName;
     }
-
-
-    // Add here any methods for the Trainee ...
-
 
 }

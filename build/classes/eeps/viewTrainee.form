@@ -51,10 +51,10 @@
                 <Column editable="true" title="ID" type="java.lang.Object"/>
                 <Column editable="true" title="Name" type="java.lang.Object"/>
                 <Column editable="true" title="Age" type="java.lang.Object"/>
-                <Column editable="true" title="Salary" type="java.lang.Object"/>
                 <Column editable="true" title="University" type="java.lang.Object"/>
-                <Column editable="true" title="GPA" type="java.lang.Object"/>
                 <Column editable="true" title="Academic Year" type="java.lang.Object"/>
+                <Column editable="true" title="GPA" type="java.lang.Object"/>
+                <Column editable="true" title="Salary" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

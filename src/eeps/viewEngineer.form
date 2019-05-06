@@ -38,7 +38,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="46" y="267" width="840" height="230"/>
+          <AbsoluteConstraints x="50" y="270" width="830" height="230"/>
         </Constraint>
       </Constraints>
 
@@ -51,11 +51,11 @@
                 <Column editable="true" title="ID" type="java.lang.Object"/>
                 <Column editable="true" title="Name" type="java.lang.Object"/>
                 <Column editable="true" title="Age" type="java.lang.Object"/>
-                <Column editable="true" title="Position" type="java.lang.Object"/>
-                <Column editable="true" title="Work Hours" type="java.lang.Object"/>
-                <Column editable="true" title="Tax" type="java.lang.Object"/>
-                <Column editable="true" title="PayRate" type="java.lang.Object"/>
                 <Column editable="true" title="Salary" type="java.lang.Object"/>
+                <Column editable="true" title="Work Hours" type="java.lang.Object"/>
+                <Column editable="true" title="PayRate" type="java.lang.Object"/>
+                <Column editable="true" title="Tax" type="java.lang.Object"/>
+                <Column editable="true" title="Position" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

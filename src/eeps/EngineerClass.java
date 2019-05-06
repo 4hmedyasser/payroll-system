@@ -2,38 +2,33 @@ package eeps;
 
 import java.io.*;
 import java.util.Scanner;
-import java.io.BufferedReader;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 
 public class EngineerClass extends EmployeeClass{
 
     private double workingHours;
-    private GradeClass grade;
-    static int numberOfEngineers ;
+    private Grade grade;
 
     public EngineerClass() {
         setId(makeID());
     }
     
-    public void addEngineer(String name , int age , double workingHours , GradeClass grade){
+    public void addEngineer(String name , int age , double workingHours , Grade grade){
 
         super.setName(name);
         super.setAge(age);
         this.workingHours=workingHours;
         this.grade=grade ;
-        this.salary = grade.CalcSalary(workingHours);
+        this.salary = grade.calculateSalary(workingHours);
         try {
             addTotext (this.name,this.id,this.age,this.workingHours , this.grade,this.salary);
         } catch (IOException e) {
             System.out.println("There is an Exception here yaa !");
         }
-        numberOfEngineers++ ;
     }
 
-    private void addTotext (String name , int id , int age , double workingHours , GradeClass grade,double salary) throws IOException {
+    private void addTotext (String name , int id , int age , double workingHours , Grade grade,double salary) throws IOException {
 
         File file = new File("Engineers.txt");
         FileWriter fw = new FileWriter(file , true);
@@ -183,38 +178,33 @@ public class EngineerClass extends EmployeeClass{
             String tax =" ";
             String position=" ";
 
-            FileReader fr = new FileReader(filepath);
-            BufferedReader brr= new BufferedReader(fr);
             Scanner w = new Scanner(new File(filepath));
             w.useDelimiter("[@\n]");
             int i = 0;
-            while(w.hasNext())
-            {
-                ArrayList<String> tempEngList = new ArrayList<String>();
-                
-                id=w.next();
-                name=w.next();
-                age=w.next();
-                salary=w.next();
-                workHours = w.next();
-                payRate= w.next();
-                tax=w.next();
-                position = w.next();
-                
-                tempEngList.add(id);
-                tempEngList.add(name);
-                tempEngList.add(age);
-                tempEngList.add(salary);
-                tempEngList.add(workHours);
-                tempEngList.add(payRate);
-                tempEngList.add(tax);
-                tempEngList.add(position);
-                
-                EngList.add(tempEngList);
-                
-                
-            }
-            fr.close();
+            while(w.hasNext()) {
+                    ArrayList<String> tempEngList = new ArrayList<String>();
+
+                    id=w.next();
+                    name=w.next();
+                    age=w.next();
+                    salary=w.next();
+                    workHours = w.next();
+                    payRate= w.next();
+                    tax=w.next();
+                    position = w.next();
+
+                    tempEngList.add(id);
+                    tempEngList.add(name);
+                    tempEngList.add(age);
+                    tempEngList.add(salary);
+                    tempEngList.add(workHours);
+                    tempEngList.add(payRate);
+                    tempEngList.add(tax);
+                    tempEngList.add(position);
+
+                    EngList.add(tempEngList);
+
+                }
             
             } catch (Exception e) {
                 new passwordError().setVisible(true);
@@ -226,7 +216,7 @@ public class EngineerClass extends EmployeeClass{
         return workingHours;
     }
 
-    public GradeClass getGrade() {
+    public Grade getGrade() {
         return grade;
     }
 
@@ -234,12 +224,9 @@ public class EngineerClass extends EmployeeClass{
         this.workingHours = workingHours;
     }
 
-    public void setGrade(GradeClass grade) {
+    public void setGrade(Grade grade) {
         this.grade = grade;
     }
-
-
-    // Add here any methods for the Engineer ...
 
 }
 

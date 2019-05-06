@@ -49,7 +49,7 @@ public class viewTrainee extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name", "Age", "Salary", "University", "GPA", "Academic Year"
+                "ID", "Name", "Age", "University", "Academic Year", "GPA", "Salary"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

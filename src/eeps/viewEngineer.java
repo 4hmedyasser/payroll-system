@@ -53,12 +53,12 @@ public class viewEngineer extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Name", "Age", "Position", "Work Hours", "Tax", "PayRate", "Salary"
+                "ID", "Name", "Age", "Salary", "Work Hours", "PayRate", "Tax", "Position"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 267, 840, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 830, 230));
 
         jPanel1.setBackground(new java.awt.Color(0, 128, 128));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

@@ -30,8 +30,8 @@ public class AddEngineer extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         name = new javax.swing.JTextField();
+        positionBox = new javax.swing.JComboBox();
         workingHours = new javax.swing.JTextField();
-        position = new javax.swing.JTextField();
         age = new javax.swing.JTextField();
         id = new javax.swing.JTextField();
         Add = new javax.swing.JLabel();
@@ -136,15 +136,13 @@ public class AddEngineer extends javax.swing.JFrame {
         name.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         getContentPane().add(name, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 130, 20));
 
+        positionBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Team Member", "Team Leader", "Manager" }));
+        getContentPane().add(positionBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 140, 20));
+
         workingHours.setBackground(new java.awt.Color(250, 243, 243));
         workingHours.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 12)); // NOI18N
         workingHours.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         getContentPane().add(workingHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 130, 20));
-
-        position.setBackground(new java.awt.Color(250, 243, 243));
-        position.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 12)); // NOI18N
-        position.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        getContentPane().add(position, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 340, 130, 20));
 
         age.setBackground(new java.awt.Color(250, 243, 243));
         age.setFont(new java.awt.Font("DejaVu Sans Condensed", 0, 12)); // NOI18N
@@ -238,9 +236,9 @@ public class AddEngineer extends javax.swing.JFrame {
     private void AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseClicked
         // TODO add your handling code here:
         
-        GradeClass tempGrade =  new GradeClass();
-        tempGrade.setPosition(position.getText());
-        tempGrade.CalcSalary(Double.parseDouble(workingHours.getText()));
+        Grade tempGrade =  new Grade();
+        tempGrade.setPosition(String.valueOf(positionBox.getSelectedItem()));
+        tempGrade.calculateSalary(Double.parseDouble(workingHours.getText()));
         tempEng.addEngineer(name.getText(), Integer.parseInt(age.getText()), Double.parseDouble(workingHours.getText()), tempGrade);
         
         new addedSuccessfully().setVisible(true);
@@ -283,7 +281,7 @@ public class AddEngineer extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField name;
-    private javax.swing.JTextField position;
+    private javax.swing.JComboBox positionBox;
     private javax.swing.JTextField workingHours;
     // End of variables declaration//GEN-END:variables
 }
