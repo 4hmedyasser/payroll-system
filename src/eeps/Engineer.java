@@ -113,6 +113,12 @@ public class Engineer extends javax.swing.JFrame {
         jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 850, 40));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 840, 40));
+
+        Add.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                AddMouseClicked(evt);
+            }
+        });
         getContentPane().add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 160, 30));
 
         Edit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -204,6 +210,13 @@ public class Engineer extends javax.swing.JFrame {
         d.setVisible(true);
         this.hide();
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void AddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddMouseClicked
+        // TODO add your handling code here:
+        AddEngineer a =  new AddEngineer();
+        a.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_AddMouseClicked
 
     public static void main(String args[]) {
        
