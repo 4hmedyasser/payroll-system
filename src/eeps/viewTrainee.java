@@ -8,6 +8,9 @@ import javax.swing.table.DefaultTableModel;
 
 public class viewTrainee extends javax.swing.JFrame {
     private int framePositionX, framePositionY, mousePositionX, mousePositionY, newMousePositionX, newMousePositionY;
+    
+    boolean loaded = false;
+    
     public viewTrainee() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -162,8 +165,7 @@ public class viewTrainee extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel4MousePressed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-           System.exit(0);
-           
+           System.exit(0);        
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -203,22 +205,26 @@ public class viewTrainee extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        
-        TraineeClass tempTrain = new TraineeClass();
-        
-        ArrayList<ArrayList<String>> tempList = tempTrain.viewTrainees();
-        
-        for(int i = 0 ; i < tempList.size() ; i++){
-            model.addRow(new Object[]{
-                tempList.get(i).get(0),
-                tempList.get(i).get(1),
-                tempList.get(i).get(2),
-                tempList.get(i).get(3),
-                tempList.get(i).get(4),
-                tempList.get(i).get(5),
-                tempList.get(i).get(6),
-            });
+        if (!loaded) {
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+            TraineeClass tempTrain = new TraineeClass();
+
+            ArrayList<ArrayList<String>> tempList = tempTrain.viewTrainees();
+
+            for(int i = 0 ; i < tempList.size() ; i++){
+                model.addRow(new Object[]{
+                    tempList.get(i).get(0),
+                    tempList.get(i).get(1),
+                    tempList.get(i).get(2),
+                    tempList.get(i).get(3),
+                    tempList.get(i).get(4),
+                    tempList.get(i).get(5),
+                    tempList.get(i).get(6),
+                });
+            }
+            
+            loaded = true;
         }
     }//GEN-LAST:event_formWindowActivated
 

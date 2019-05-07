@@ -1,6 +1,5 @@
 package eeps;
     
-import java.util.List;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.*;
@@ -10,11 +9,12 @@ import java.util.ArrayList;
 
 public class viewEngineer extends javax.swing.JFrame {
     private int framePositionX, framePositionY, mousePositionX, mousePositionY, newMousePositionX, newMousePositionY;
+    
+    boolean loaded = false;
+    
     public viewEngineer() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
-
     }
     
     @SuppressWarnings("unchecked")
@@ -166,8 +166,7 @@ public class viewEngineer extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel4MousePressed
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-           System.exit(0);
-           
+           System.exit(0);   
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
@@ -207,27 +206,27 @@ public class viewEngineer extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        
-        EngineerClass tempEng = new EngineerClass();
-        
-        ArrayList<ArrayList<String>> tempList = tempEng.viewEngineers();
-        for(int i = 0 ; i < tempList.size() ; i++){
-            model.addRow(new Object[]{
-                tempList.get(i).get(0),
-                tempList.get(i).get(1),
-                tempList.get(i).get(2),
-                tempList.get(i).get(3),
-                tempList.get(i).get(4),
-                tempList.get(i).get(5),
-                tempList.get(i).get(6),
-                tempList.get(i).get(7),
-            });
+        if (!loaded){
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+            EngineerClass tempEng = new EngineerClass();
+
+            ArrayList<ArrayList<String>> tempList = tempEng.viewEngineers();
+            for(int i = 0 ; i < tempList.size() ; i++){
+                model.addRow(new Object[]{
+                    tempList.get(i).get(0),
+                    tempList.get(i).get(1),
+                    tempList.get(i).get(2),
+                    tempList.get(i).get(3),
+                    tempList.get(i).get(4),
+                    tempList.get(i).get(5),
+                    tempList.get(i).get(6),
+                    tempList.get(i).get(7),
+                });
+            }
+            
+            loaded = true;
         }
-        
-        
-        
-        
     }//GEN-LAST:event_formWindowActivated
 
     public static void main(String args[]) {
