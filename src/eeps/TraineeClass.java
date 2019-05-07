@@ -230,7 +230,7 @@ public class TraineeClass extends EmployeeClass{
             }
             
         } catch (Exception e) {
-            System.out.println("There is an Exception here !");
+            System.out.println("Trainees.txt doesn't exist.\n\t@ viewTrainees");
         }
         
         return tempViewTrain;
@@ -285,9 +285,7 @@ public class TraineeClass extends EmployeeClass{
         }
         catch (Exception e)
         {
-
-            System.out.println("There is an Exception @ SearchTrainees");
-
+            System.out.println("Trainees.txt doesn't exist.\n\t@ searchTrainees");
         }
         
         return searchResults;

@@ -222,7 +222,7 @@ public class EngineerClass extends EmployeeClass{
                 }
             
             } catch (Exception e) {
-                new passwordError().setVisible(true);
+                System.out.println("Engineers.txt doesn't exist.\n\t@ viewEngineers");
             }
         return EngList;
     }

@@ -119,28 +119,28 @@ public class Engineer extends javax.swing.JFrame {
                 AddMouseClicked(evt);
             }
         });
-        getContentPane().add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 160, 30));
+        getContentPane().add(Add, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 180, 60));
 
         Edit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 EditMouseClicked(evt);
             }
         });
-        getContentPane().add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 170, 30));
+        getContentPane().add(Edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 240, 170, 60));
 
         Dekete.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DeketeMouseClicked(evt);
             }
         });
-        getContentPane().add(Dekete, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, 170, 30));
+        getContentPane().add(Dekete, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 180, 50));
 
         view.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewMouseClicked(evt);
             }
         });
-        getContentPane().add(view, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 380, 160, 30));
+        getContentPane().add(view, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 370, 170, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/eeps/Images/EngineerPanel.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 830, 460));
