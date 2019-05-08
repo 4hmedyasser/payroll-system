@@ -5,9 +5,8 @@ public class EEPS {
     public static void main(String[] args) {
     
     
-    adminForm as = new adminForm();
-    as.setVisible(true);
-
+    login l = new login();
+    l.setVisible(true);
 
     }
     
